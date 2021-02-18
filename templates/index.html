@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>bmi calculator</title>
+        <style>
+            body{
+                background-image: url("https://images.hdqwalls.com/wallpapers/future-sports-car-neon-sunset-background-4k-il.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+            }
+            button{
+                border-radius: 30px 30px 30px 30px;
+                background-color: rgb(92, 6, 88);
+                font-size: 25px;
+                margin: 20px;
+                text-align: center;
+                width: 180px;
+                height: 60px;
+            }
+            button:hover{
+                background-color: rgb(43, 42, 42);
+                color: white;
+            }
+            input{
+                width: 100px;
+                height: 40px;
+                background-color: rgb(43, 42, 42);
+                text-align: center;
+                color: white;
+                font-size: 25px;
+                border-radius: 5px 5px 5px 5px;
+            }
+            #ans{
+                color: rgb(255, 196, 0);
+            }
+            #hadline{
+                color: white;
+            }
+            #demo{
+                color:white;
+            }
+        </style>
+    </head>
+<body>
+    <dev class="login">
+        <center>
+            <h1 id="hadline">
+                CALCULATE YOUR BMI
+            </h1><br>
+            <h2>
+                ENTER YOUR WEIGHT IN KG
+            </h2>
+            <form method = 'POST' action = "{{url_for('home')}}">
+                <input type = "text" name = w placeholder="ENTER" required = "required"><br><br><br>
+                <h2>ENTER YOUR HEIGHT IN CM</h2>
+                <input type = "text" name = h placeholder="ENTER" required = "required"><br><br><br>
+                <button type = "submit">CALCULATE</button>
+            </form>
+            <br>
+            <br>
+            <h1 id="ans">
+                {{ answer }}
+            </h1>
+            <h1 id="demo"></h1>
+            <script>
+                var ans = {{bmi}};
+                var show;
+                if (ans < 18.5){
+                    show = "YOU ARE IN UNDERWEIGHT CATEGORY";}
+                else if (ans >= 18.5 && ans <= 24.9){
+                    show = "YOU ARE IN NORMAL CATEGORY";}
+                else if (ans >= 25.0 && ans <= 29.9){
+                    show = "YOU ARE IN OVERWEIGHT CATEGORY";}
+                else{
+                    show = "YOU ARE IN OBESE CATEGORY";}
+                document.getElementById("demo").innerHTML = show;
+            </script>    
+        </center>
+    </dev>
+</body>
+</html>
